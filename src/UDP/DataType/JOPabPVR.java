@@ -1,4 +1,4 @@
-package UDP;
+package UDP.DataType;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;

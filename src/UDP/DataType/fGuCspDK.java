@@ -1,28 +1,26 @@
-package UDP;
+package UDP.DataType;
 
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 
-public class Q7EOqDpWh {
+public class fGuCspDK {
     public static void main(String[] args) {
         String serverAddress = "36.50.135.242";
-        int serverPort = 2208;
+        int serverPort = 2207;
 
         String studentCode = "B23DCCN230";
-        String qCode = "7EOqDpWh";
+        String qCode = "fGuCspDK";
 
         try {
             DatagramSocket socket = new DatagramSocket();
             InetAddress serverIP = InetAddress.getByName(serverAddress);
 
-            //a. Gui request
             String request = ";" + studentCode + ";" + qCode;
             byte[] sendData = request.getBytes(StandardCharsets.UTF_8);
 
             DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, serverIP, serverPort);
             socket.send(sendPacket);
 
-            //b. Nhan request, data
             byte[] receiveData = new byte[65535];
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
             socket.receive(receivePacket);
@@ -32,36 +30,24 @@ public class Q7EOqDpWh {
             String[] parts = response.split(";", 2);
             String requestId = parts[0];
             String data = parts[1];
+            String[] nums = data.split(",");
 
-            int[] cnt = new int[256];
+            int max = Integer.MIN_VALUE;
+            int min = Integer.MAX_VALUE;
 
-            for (int i = 0; i < data.length(); i++) {
-                cnt[data.charAt(i)]++;
-            }
-
-            char maxChar = data.charAt(0);
-            int maxCnt = 0;
-
-            for (int i = 0; i < data.length(); i++){
-                char c = data.charAt(i);
-                if (cnt[c] > maxCnt) {
-                    maxChar = c;
-                    maxCnt = cnt[c];
+            for (String n : nums) {
+                int val = Integer.parseInt(n.trim());
+                if (val > max) {
+                    max = val;
+                }
+                if (val < min) {
+                    min = val;
                 }
             }
 
-            StringBuilder pos = new StringBuilder();
-
-            for (int i = 0; i < data.length(); i++) {
-                if (data.charAt(i) == maxChar) {
-                    pos.append(i + 1).append(",");
-                }
-            }
-
-            String res = requestId + ";" + maxChar + ":" + pos;
+            String res = requestId + ";" + max + "," + min;
 
             byte[] resData = res.getBytes(StandardCharsets.UTF_8);
-
             DatagramPacket resPacket = new DatagramPacket(resData, resData.length, serverIP, serverPort);
             socket.send(resPacket);
 
