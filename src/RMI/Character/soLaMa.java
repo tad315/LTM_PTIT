@@ -5,7 +5,7 @@ import RMI.CharacterService;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class qNC0nMt9 {
+public class soLaMa {
     public static void main(String[] args) {
         String server = "36.50.135.242";
         int port = 1099;

@@ -6,7 +6,7 @@ import java.net.URI;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-public class jvhIYafA {
+public class URLEncoding {
     public static void main(String[] args) {
         String server = "36.50.135.242";
         int port = 1099;
