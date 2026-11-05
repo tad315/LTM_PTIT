@@ -1,4 +1,4 @@
-package WS;
+package WS.Data;
 
 import SOAP.generated.DataService;
 import SOAP.generated.SoapDataService;

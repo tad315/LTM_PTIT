@@ -23,6 +23,7 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <plugins>
             <plugin>
@@ -30,13 +31,49 @@
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>4.0.3</version>
 
-                <configuration>
-                    <wsdlUrls>
-                        <wsdlUrl>http://36.50.135.242:2221/DataService?wsdl</wsdlUrl>
-                    </wsdlUrls>
-                    <packageName>SOAP.generated</packageName>
-                    <keep>true</keep>
-                </configuration>
+                <executions>
+                    <!-- SOAP Data -->
+                    <execution>
+                        <id>data-service</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://36.50.135.242:2221/DataService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>SOAP.data</packageName>
+                        </configuration>
+                    </execution>
+
+                    <!-- SOAP Character -->
+                    <execution>
+                        <id>character-service</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://36.50.135.242:2221/CharacterService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>SOAP.character</packageName>
+                        </configuration>
+                    </execution>
+
+                    <!-- SOAP Object -->
+                    <execution>
+                        <id>object-service</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlUrls>
+                                <wsdlUrl>http://36.50.135.242:2221/ObjectService?wsdl</wsdlUrl>
+                            </wsdlUrls>
+                            <packageName>SOAP.object</packageName>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

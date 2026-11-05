@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>run</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs>com.mycompany.rmi.aEEkypOG</exec.appArgs>
+                <exec.mainClass>package com.mycompany.rmi;  import java.rmi.registry.LocateRegistry; import java.rmi.registry.Registry; import java.util.HashMap; import java.util.Map; import RMI.ByteService;  public class aEEkypOG {      public static void main(String[] args) {         try {             Registry registry = LocateRegistry.getRegistry("36.50.135.242");              ByteService service = (ByteService) registry.lookup("RMIByteService");              String studentCode = "YOUR_STUDENT_CODE";             String qCode = "aEEkypOGsvg";              byte[] data = service.requestData(studentCode, qCode);              Map&lt;Byte, Integer&gt; map = new HashMap&lt;&gt;();              for (byte b : data) {                 map.put(b, map.getOrDefault(b, 0) + 1);             }              byte minElement = data[0];             int minCount = map.get(minElement);              for (byte b : data) {                 if (map.get(b) &lt; minCount) {                     minElement = b;                     minCount = map.get(b);                 }             }              byte[] result = {                 minElement,                 (byte) minCount             };              service.submitData(studentCode, qCode, result);              System.out.println("Da gui ket qua thanh cong!");             System.out.println("Phan tu: " + minElement);             System.out.println("So lan xuat hien: " + minCount);          } catch (Exception e) {             e.printStackTrace();         }     } }</exec.mainClass>
+                <exec.executable>java</exec.executable>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address}</exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.appArgs>com.mycompany.rmi.aEEkypOG</exec.appArgs>
+                <exec.mainClass>package com.mycompany.rmi;  import java.rmi.registry.LocateRegistry; import java.rmi.registry.Registry; import java.util.HashMap; import java.util.Map; import RMI.ByteService;  public class aEEkypOG {      public static void main(String[] args) {         try {             Registry registry = LocateRegistry.getRegistry("36.50.135.242");              ByteService service = (ByteService) registry.lookup("RMIByteService");              String studentCode = "YOUR_STUDENT_CODE";             String qCode = "aEEkypOGsvg";              byte[] data = service.requestData(studentCode, qCode);              Map&lt;Byte, Integer&gt; map = new HashMap&lt;&gt;();              for (byte b : data) {                 map.put(b, map.getOrDefault(b, 0) + 1);             }              byte minElement = data[0];             int minCount = map.get(minElement);              for (byte b : data) {                 if (map.get(b) &lt; minCount) {                     minElement = b;                     minCount = map.get(b);                 }             }              byte[] result = {                 minElement,                 (byte) minCount             };              service.submitData(studentCode, qCode, result);              System.out.println("Da gui ket qua thanh cong!");             System.out.println("Phan tu: " + minElement);             System.out.println("So lan xuat hien: " + minCount);          } catch (Exception e) {             e.printStackTrace();         }     } }</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <packagings>
+                <packaging>jar</packaging>
+            </packagings>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:3.1.0:exec</goal>
+            </goals>
+            <properties>
+                <exec.vmArgs></exec.vmArgs>
+                <exec.args>${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}</exec.args>
+                <exec.mainClass>package com.mycompany.rmi;  import java.rmi.registry.LocateRegistry; import java.rmi.registry.Registry; import java.util.HashMap; import java.util.Map; import RMI.ByteService;  public class aEEkypOG {      public static void main(String[] args) {         try {             Registry registry = LocateRegistry.getRegistry("36.50.135.242");              ByteService service = (ByteService) registry.lookup("RMIByteService");              String studentCode = "YOUR_STUDENT_CODE";             String qCode = "aEEkypOGsvg";              byte[] data = service.requestData(studentCode, qCode);              Map&lt;Byte, Integer&gt; map = new HashMap&lt;&gt;();              for (byte b : data) {                 map.put(b, map.getOrDefault(b, 0) + 1);             }              byte minElement = data[0];             int minCount = map.get(minElement);              for (byte b : data) {                 if (map.get(b) &lt; minCount) {                     minElement = b;                     minCount = map.get(b);                 }             }              byte[] result = {                 minElement,                 (byte) minCount             };              service.submitData(studentCode, qCode, result);              System.out.println("Da gui ket qua thanh cong!");             System.out.println("Phan tu: " + minElement);             System.out.println("So lan xuat hien: " + minCount);          } catch (Exception e) {             e.printStackTrace();         }     } }</exec.mainClass>
+                <exec.executable>java</exec.executable>
+                <exec.appArgs>com.mycompany.rmi.aEEkypOG</exec.appArgs>
+            </properties>
+        </action>
+    </actions>
