@@ -14,13 +14,14 @@ public class YvwDtnm9 {
         SoapCharacterService port = service.getSoapCharacterServicePort();
 
         List<String> data = port.requestStringArray(sCode, qCode);
-
+        List<S>
 
     }
 
     public static int priority (String s) {
         if (s.startsWith("ERROR")) return 0;
         if (s.startsWith("WARN")) return 1;
-        if
+        if (s.startsWith("INFO")) return 2;
+        return 3;
     }
 }
