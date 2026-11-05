@@ -1,9 +1,9 @@
 package RMI.Data;
 
 import RMI.DataService;
+
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
